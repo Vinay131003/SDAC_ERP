@@ -44,95 +44,68 @@ Before running the project, ensure you have the following installed:
    ```sql
    CREATE DATABASE erp_sdac;
    USE erp_sdac;
-````
+   ```
 
----
 
-### 4. Add Required Libraries
+### 4. Add Required Libraries  
 
-* **Servlet API**
+- **Servlet API**  
+  - Provided by Tomcat, but make sure Eclipse recognizes it:  
+    - Right-click project → `Properties → Build Path → Add Library → Server Runtime → Apache Tomcat`.  
 
-  * Provided by Tomcat, but make sure Eclipse recognizes it:
-
-    * Right-click project → `Properties → Build Path → Add Library → Server Runtime → Apache Tomcat`.
-
-* **MySQL Connector**
-
-  * Download `mysql-connector-j-8.x.x.jar` from MySQL official site.
-  * Copy it to:
-
+- **MySQL Connector**  
+  - Download `mysql-connector-j-8.x.x.jar` from MySQL official site.  
+  - Copy it to:  
     ```
     WebContent/WEB-INF/lib/
     ```
-  * Refresh project in Eclipse.
+  - Refresh project in Eclipse.  
 
 ---
 
-### 5. Project Structure
+### 5. Project Structure  
+
+````
+
+ERP\_SDAC/
+├── src/
+│    ├── com.erp.controller   (Servlets)
+│    ├── com.erp.dao          (Database Access Objects)
+│    ├── com.erp.model        (POJO classes)
+│    └── com.erp.util         (Utilities: DB connection, helpers)
+│
+├── WebContent/
+│    ├── index.jsp
+│    ├── dashboard.jsp
+│    └── WEB-INF/
+│         ├── web.xml         (Deployment Descriptor)
+│         └── lib/            (MySQL Connector)
+│
+└── database/
+└── erp\_sdac.sql
+
+
+````
+
+### 6. Run the Project  
+1. Right-click project → **Run As → Run on Server**.  
+2. Choose **Tomcat server** and start it.  
+3. Open your browser at:  
 
 ```
-ERP_SDAC/
- ├── src/
- │    ├── com.erp.controller   (Servlets)
- │    ├── com.erp.dao          (Database Access Objects)
- │    ├── com.erp.model        (POJO classes)
- │    └── com.erp.util         (Utilities: DB connection, helpers)
- │
- ├── WebContent/
- │    ├── index.jsp
- │    ├── dashboard.jsp
- │    └── WEB-INF/
- │         ├── web.xml         (Deployment Descriptor)
- │         └── lib/            (MySQL Connector)
- │
- └── database/
-      └── erp_sdac.sql
+
+http://localhost:8080/ERP_SDAC
+
 ```
 
----
+## 🛠 Troubleshooting  
+- **Error: `ClassNotFoundException: com.mysql.cj.jdbc.Driver`**  
+→ Ensure `mysql-connector-j.jar` is in `WEB-INF/lib`.  
 
-### 6. Run the Project
+- **Error: `HTTP Status 404 – Not Found`**  
+→ Check if the servlet is correctly mapped in `web.xml`.  
 
-1. Right-click project → **Run As → Run on Server**.
-2. Choose **Tomcat server** and start it.
-3. Open your browser at:
-
-   ```
-   http://localhost:8080/ERP_SDAC
-   ```
+- **Port Conflict (Tomcat not starting)**  
+→ Change Tomcat port from `8080` to another (e.g., `8081`) in `server.xml`.  
 
 ---
-
-## 🔑 Default Login (if applicable)
-
-* **Username**: `admin`
-* **Password**: `admin123`
-
-*(Update as per your actual credentials)*
-
----
-
-## 🛠 Troubleshooting
-
-* **Error: `ClassNotFoundException: com.mysql.cj.jdbc.Driver`**
-  → Ensure `mysql-connector-j.jar` is in `WEB-INF/lib`.
-
-* **Error: `HTTP Status 404 – Not Found`**
-  → Check if the servlet is correctly mapped in `web.xml`.
-
-* **Port Conflict (Tomcat not starting)**
-  → Change Tomcat port from `8080` to another (e.g., `8081`) in `server.xml`.
-
----
-
-## 🔗 Project Links
-
-* **GitHub Repository**: \[Your Repo Link Here]
-* **Hosted Page**: \[Your Hosted Page Link Here]
-
----
-
-## 👨‍💻 Author
-
-**Your Name**
-ERP SDAC Project – Developed as part of SDAC course
