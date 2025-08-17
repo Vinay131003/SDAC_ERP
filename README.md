@@ -1,4 +1,4 @@
-##ERP SDAC Project
+ERP SDAC Project
 
 📌 Overview
 This project is an ERP system developed in Java (Servlets + JSP) using MVC architecture. It runs on Eclipse IDE with Apache Tomcat and uses MySQL as the database.
